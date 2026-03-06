@@ -12,10 +12,7 @@ export async function POST(req: Request) {
   };
 
   if (!user_id || !conversation_id || !message_id || !payload) {
-    return NextResponse.json(
-      { error: "user_id, conversation_id, message_id, payload required" },
-      { status: 400 }
-    );
+    return NextResponse.json({ error: "missing fields" }, { status: 400 });
   }
 
   const { error } = await supabaseServer.from("events").insert({
@@ -23,7 +20,7 @@ export async function POST(req: Request) {
     conversation_id,
     message_id,
     type: "post_send_eval",
-    feature_type: "emotion",
+    feature_type: "situation",
     payload,
   });
 

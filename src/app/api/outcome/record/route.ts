@@ -4,16 +4,23 @@ import { supabaseServer } from "@/lib/supabaseServer";
 export async function POST(req: Request) {
   const body = await req.json().catch(() => ({}));
 
-  const { user_id, conversation_id, message_id, payload } = body as {
+  const { user_id, conversation_id, message_id, feature_type, sent } = body as {
     user_id?: string;
     conversation_id?: string;
     message_id?: string;
-    payload?: any;
+    feature_type?: "emotion" | "situation";
+    sent?: "send" | "edited_send" | "not_send";
   };
 
-  if (!user_id || !conversation_id || !message_id || !payload) {
+  if (
+    !user_id ||
+    !conversation_id ||
+    !message_id ||
+    !feature_type ||
+    !["send", "edited_send", "not_send"].includes(sent ?? "")
+  ) {
     return NextResponse.json(
-      { error: "user_id, conversation_id, message_id, payload required" },
+      { error: "user_id, conversation_id, message_id, feature_type, sent required" },
       { status: 400 }
     );
   }
@@ -22,9 +29,9 @@ export async function POST(req: Request) {
     user_id,
     conversation_id,
     message_id,
-    type: "post_send_eval",
-    feature_type: "emotion",
-    payload,
+    type: "delivery_outcome",
+    feature_type,
+    payload: { sent },
   });
 
   if (error) {
