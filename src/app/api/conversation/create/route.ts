@@ -1,6 +1,3 @@
-console.log("SUPABASE_URL:", process.env.SUPABASE_URL);
-console.log("SERVICE_KEY_PREFIX:", (process.env.SUPABASE_SERVICE_ROLE_KEY ?? "").slice(0, 6));
-
 import { NextResponse } from "next/server";
 import { supabaseServer } from "@/lib/supabaseServer";
 

@@ -1,5 +1,7 @@
 import { supabaseServer } from "@/lib/supabaseServer";
 
+export const dynamic = "force-dynamic";
+
 type EventRow = {
   type: string;
   feature_type: "emotion" | "situation" | null;
