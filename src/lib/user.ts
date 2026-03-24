@@ -1,10 +1,12 @@
-export function getOrCreateAnonUserId() {
-  if (typeof window === "undefined") return "server";
-  const key = "anon_user_id";
-  let v = localStorage.getItem(key);
-  if (!v) {
-    v = crypto.randomUUID();
-    localStorage.setItem(key, v);
-  }
-  return v;
+"use client";
+
+const KEY = "ai-buffer-user";
+
+export function getUserId() {
+  if (typeof window === "undefined") return "";
+  const old = localStorage.getItem(KEY);
+  if (old) return old;
+  const id = crypto.randomUUID();
+  localStorage.setItem(KEY, id);
+  return id;
 }
