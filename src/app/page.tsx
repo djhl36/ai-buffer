@@ -115,3 +115,17 @@ export default function Home() {
     </main>
   );
 }
+
+import Link from "next/link";
+
+export function Footer() {
+  return (
+    <footer className="border-t border-gray-200 px-6 py-8 text-sm text-gray-500 dark:border-neutral-800 dark:text-neutral-400">
+      <div className="mx-auto flex max-w-6xl flex-wrap gap-4">
+        <Link href="/privacy">개인정보처리방침</Link>
+        <Link href="/terms">이용약관</Link>
+        <Link href="/refund">환불정책</Link>
+      </div>
+    </footer>
+  );
+}
