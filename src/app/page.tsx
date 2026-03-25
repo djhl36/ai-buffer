@@ -109,7 +109,7 @@ export default function Home() {
         </div>
 
         <p className="mt-6 text-[11px] leading-5 text-gray-400 sm:text-xs">
-          사용자가 입력한 내용은 저장되지 않으며, 성능 개선을 위해 피드백 결과를 수집합니다.
+          서비스 성능 개선을 위해 사용자가 입력한 데이터는 익명으로 저장될 수 있으며, 피드백 결과를 수집합니다.
         </p>
       </section>
     </main>
